@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">BevixApp</string>
+    <string name="app_name">Bevix App</string>
+
+    <!-- Drink Names -->
+    <string name="drink_purple">Purple Drink</string>
+    <string name="drink_lemon_lime">Lemon-lime</string>
+    <string name="drink_strawberry_apple">Strawberry Apple</string>
+    <string name="drink_strawberry_tea">Strawberry Tea</string>
+    <string name="drink_apple_tea">Apple Tea</string>
+
+    <!-- Drink Descriptions -->
+    <string name="description_purple">A refreshing purple-colored beverage with a unique flavor.</string>
+    <string name="description_lemon_lime">A citrusy blend of lemon and lime flavors.</string>
+    <string name="description_strawberry_apple">A delicious combination of fresh strawberries and ripe apples.</string>
+    <string name="description_strawberry_tea">A fragrant tea infused with ripe strawberries.</string>
+    <string name="description_apple_tea">A soothing tea made from crisp apples.</string>
+
+    <!-- Ingredients -->
+    <string name="tonic_water">Tonic Water</string>
+    <string name="lime_juice">Lime Juice</string>
+    <string name="butterfly_pea">Butterfly Pea</string>
+    <string name="lemon_juice">Lemon Juice</string>
+    <string name="strawberry">Strawberry</string>
+    <string name="green_apple">Green Apple</string>
+
+
 </resources>

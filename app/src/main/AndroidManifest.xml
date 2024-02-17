@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.bevixapp">
 
-    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.BLUETOOTH_DISCOVER" />
 
     <application
         android:allowBackup="true"
@@ -25,33 +23,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BevixApp"
         tools:targetApi="31">
+
+        <activity android:name=".CustomMenuActivity" />
         <activity
-            android:name=".Order"
+            android:name=".CupPlacementActivity"
+            android:exported="false" />
+        <activity android:name=".ConfirmationPromptActivity" />
+        <activity
+            android:name=".SizePickerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
             android:exported="false" />
         <activity
             android:name=".BluetoothActivity"
-            android:exported="false" />
-        <activity
-            android:name=".QRGenerator"
             android:exported="false" />
         <activity
             android:name=".QRScanView"
             android:exported="false" />
         <activity
             android:name=".QRScanner"
-            android:exported="false" />
-        <activity
-            android:name=".Menu"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Include DrinkSharingActivity -->
+        <activity
+            android:name=".DrinkQRActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
