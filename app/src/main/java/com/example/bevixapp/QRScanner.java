@@ -16,6 +16,8 @@ public class QRScanner extends AppCompatActivity {
     private CaptureManager capture;
     private DecoratedBarcodeView barcodeScannerView;
 
+    private int currentCameraId = 0; // 0 for back camera, 1 for front camera
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +65,20 @@ public class QRScanner extends AppCompatActivity {
             Toast.makeText(QRScanner.this, "Invalid QR code", Toast.LENGTH_SHORT).show();
             return;
         }
+        String[] item = qrCodeText.split(",");
+        int[] presetValues = new int[item.length];
+        for (int i = 0; i < item.length; i++) {
+            presetValues[i] = Integer.parseInt(item[i].trim());
+        }
+        Intent QRintent = new Intent(QRScanner.this, CustomMenuActivity.class);
+        QRintent.putExtra("qrCodeValues", presetValues);
+        startActivity(QRintent);
+
+
 
         // Create an Intent to open the SizePickerActivity and pass the QR code text
-        Intent intent = new Intent(QRScanner.this, SizePickerActivity.class);
-        intent.putExtra("qrCodeText", qrCodeText);
-        startActivity(intent);
+//        Intent intent = new Intent(QRScanner.this, SizePickerActivity.class);
+//        intent.putExtra("qrCodeText", qrCodeText);
+//        startActivity(intent);
     };
 }

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomMenuActivity extends AppCompatActivity implements IngredientAdapter.IngredientChangeListener {
+public class    CustomMenuActivity extends AppCompatActivity implements IngredientAdapter.IngredientChangeListener {
 
     private RecyclerView recyclerView;
     private Button buttonDone;
@@ -26,6 +26,11 @@ public class CustomMenuActivity extends AppCompatActivity implements IngredientA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_menu);
+
+        // Retrieve preset values from intent extras
+
+        int[] qrCodeValues = getIntent().getIntArrayExtra("qrCodeValues");
+
 
         // Initialize views
         recyclerView = findViewById(R.id.recycler_view_ingredients);
@@ -44,8 +49,13 @@ public class CustomMenuActivity extends AppCompatActivity implements IngredientA
         ingredients.add(new Ingredient("Green Apple", R.drawable.ic_launcher_background));
 
         // Initialize preset values with 6 zeros initially
-        presetValues = new int[]{0, 0, 0, 0, 0, 0};
-
+//        presetValues = new int[]{0, 0, 0, 0, 0, 0};
+        presetValues = qrCodeValues != null ? qrCodeValues : new int[]{0, 0, 0, 0, 0, 0};
+//        if (qrCodeValues != null){
+//            presetValues =  new int[] qrCodeValues;
+//        } else {
+//            presetValues = new int[]{0, 0, 0, 0, 0, 0};
+//        }
         // Initialize RecyclerView
         adapter = new IngredientAdapter(ingredients, presetValues, this, this);
         recyclerView.setAdapter(adapter);
@@ -59,6 +69,10 @@ public class CustomMenuActivity extends AppCompatActivity implements IngredientA
                 Intent intent = new Intent(CustomMenuActivity.this, CupPlacementActivity.class);
                 intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
                 startActivity(intent);
+
+                Intent secondIntent = new Intent(CustomMenuActivity.this, DrinkQRActivity.class);
+                secondIntent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+                startActivity(secondIntent);
             }
         });
     }

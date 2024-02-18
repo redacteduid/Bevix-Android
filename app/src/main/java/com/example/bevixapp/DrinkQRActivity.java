@@ -27,6 +27,8 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class DrinkQRActivity extends AppCompatActivity {
 
@@ -42,23 +44,37 @@ public class DrinkQRActivity extends AppCompatActivity {
         String selectedDrink = getIntent().getStringExtra("drink_name");
 
         // Generate drink data array based on the selected drink
-        int[] presetValues = getIntent().getIntArrayExtra("presetValues");
-
+        Bundle extras = getIntent().getExtras();
+        int[] presetValues = extras.getIntArray("presetValues");
         // Generate and display QR code
-        generateQRCode(selectedDrink, presetValues);
+//        generateQRCode(selectedDrink, presetValues);
 
         qrCodeImageView = findViewById(R.id.qrCodeImageView);
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);
-
+        generateQRCode(presetValues);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
+//            public void onClick(View v) {
+//                if (checkPermission()) {
+//                    saveQRCodeImage();
+//                } else {
+//                    requestPermission();
+//                }
+//            }
+
             public void onClick(View v) {
-                if (checkPermission()) {
-                    saveQRCodeImage();
-                } else {
-                    requestPermission();
+
+                // Check if extras is not null and presetValues is not null before using them
+                if (presetValues != null) {
+                    // Convert the array to string to display
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int value : presetValues) {
+                        stringBuilder.append(value).append(", ");
+                    }
+                    generateQRCode(presetValues);
+
                 }
             }
         });
@@ -90,17 +106,44 @@ public class DrinkQRActivity extends AppCompatActivity {
         Bitmap qrCodeBitmap = ((BitmapDrawable) qrCodeImageView.getDrawable()).getBitmap();
         saveDrinkQRCode(qrCodeBitmap);
     }
+//
+//    private void generateQRCode(String selectedDrink, int[] presetValues) {
+//        Log.d("DrinkQRActivity", "Selected Drink: " + selectedDrink);
+//        Log.d("DrinkQRActivity", "Drink Data Array: " + Arrays.toString(presetValues));
+//        // Check if the selected drink name and its data array are not null
+//        if (selectedDrink == null || presetValues == null) {
+//            Toast.makeText(this, "Error: Drink data is missing", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        // Generate QR code for drink data
+//        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+//        try {
+//            StringBuilder drinkData = new StringBuilder();
+//            for (int i = 0; i < presetValues.length; i++) {
+//                drinkData.append(presetValues[i]);
+//                if (i != presetValues.length - 1) {
+//                    drinkData.append(",");
+//                }
+//            }
+//            BitMatrix bitMatrix = qrCodeWriter.encode(drinkData.toString(), com.google.zxing.BarcodeFormat.QR_CODE, 400, 400);
+//            Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.RGB_565);
+//
+//            for (int x = 0; x < 400; x++) {
+//                for (int y = 0; y < 400; y++) {
+//                    bitmap.setPixel(x, y, bitMatrix.get(x, y) ? getResources().getColor(R.color.black) : getResources().getColor(R.color.white));
+//                }
+//            }
+//
+//            qrCodeImageView.setImageBitmap(bitmap);
+//        } catch (WriterException e) {
+//            e.printStackTrace();
+//            Toast.makeText(this, "Failed to generate QR code", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
-    private void generateQRCode(String selectedDrink, int[] presetValues) {
-        Log.d("DrinkQRActivity", "Selected Drink: " + selectedDrink);
-        Log.d("DrinkQRActivity", "Drink Data Array: " + Arrays.toString(presetValues));
-        // Check if the selected drink name and its data array are not null
-        if (selectedDrink == null || presetValues == null) {
-            Toast.makeText(this, "Error: Drink data is missing", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Generate QR code for drink data
+    private void generateQRCode(int[] presetValues) {
+        // Generate QR code for the preset values
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         try {
             StringBuilder drinkData = new StringBuilder();

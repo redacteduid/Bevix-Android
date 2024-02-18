@@ -53,5 +53,9 @@ public class MenuActivity extends AppCompatActivity implements MenuAdapter.OnIte
         intent.putExtra("drink_name", item.getName());
         intent.putExtra("drink_description", item.getDescription());
         startActivity(intent);
+
+//        Intent drinkNameIntent = new Intent(MenuActivity.this, DrinkQRActivity.class);
+//        drinkNameIntent.putExtra("drink_name", item.getName());
+//        startActivity(drinkNameIntent);
     }
 }
