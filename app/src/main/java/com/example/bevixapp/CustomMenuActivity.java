@@ -65,14 +65,16 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
         buttonDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                Intent secondIntent = new Intent(CustomMenuActivity.this, DrinkQRActivity.class);
+//                secondIntent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+//                startActivity(secondIntent);
                 // Proceed to CupPlacementActivity
                 Intent intent = new Intent(CustomMenuActivity.this, CupPlacementActivity.class);
                 intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
                 startActivity(intent);
 
-                Intent secondIntent = new Intent(CustomMenuActivity.this, DrinkQRActivity.class);
-                secondIntent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
-                startActivity(secondIntent);
+
             }
         });
     }

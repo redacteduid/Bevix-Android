@@ -29,8 +29,8 @@ public class CupPlacementActivity extends AppCompatActivity {
 
             // Display QR code based on the data
             Intent qrIntent = new Intent(CupPlacementActivity.this, DrinkQRActivity.class);
-            qrIntent.putExtra("drink_name", selectedDrink);
-            qrIntent.putExtra("drink_data_array", presetValues);
+//            qrIntent.putExtra("drink_name", selectedDrink);
+            qrIntent.putExtra("presetValues", presetValues);
             startActivity(qrIntent);
         });
     }

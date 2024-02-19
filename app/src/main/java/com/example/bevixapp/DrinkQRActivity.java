@@ -45,6 +45,7 @@ public class DrinkQRActivity extends AppCompatActivity {
 
         // Generate drink data array based on the selected drink
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         int[] presetValues = extras.getIntArray("presetValues");
         // Generate and display QR code
 //        generateQRCode(selectedDrink, presetValues);
@@ -52,6 +53,7 @@ public class DrinkQRActivity extends AppCompatActivity {
         qrCodeImageView = findViewById(R.id.qrCodeImageView);
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);
+        assert presetValues != null;
         generateQRCode(presetValues);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -66,16 +68,19 @@ public class DrinkQRActivity extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                // Check if extras is not null and presetValues is not null before using them
-                if (presetValues != null) {
-                    // Convert the array to string to display
-                    StringBuilder stringBuilder = new StringBuilder();
-                    for (int value : presetValues) {
-                        stringBuilder.append(value).append(", ");
-                    }
-                    generateQRCode(presetValues);
-
-                }
+//                // Check if extras is not null and presetValues is not null before using them
+//                if (presetValues != null) {
+//                    // Convert the array to string to display
+//                    StringBuilder stringBuilder = new StringBuilder();
+//                    for (int value : presetValues) {
+//                        stringBuilder.append(value).append(", ");
+//                    }
+//                    generateQRCode(presetValues);
+//
+//                }
+                Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
+                intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+                startActivity(intent);
             }
         });
 
