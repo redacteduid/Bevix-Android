@@ -30,7 +30,7 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
         // Retrieve preset values from intent extras
 
         int[] qrCodeValues = getIntent().getIntArrayExtra("qrCodeValues");
-
+        int[] mixPresetValues = getIntent().getIntArrayExtra("drink_mix");
 
         // Initialize views
         recyclerView = findViewById(R.id.recycler_view_ingredients);
@@ -50,7 +50,11 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
 
         // Initialize preset values with 6 zeros initially
 //        presetValues = new int[]{0, 0, 0, 0, 0, 0};
-        presetValues = qrCodeValues != null ? qrCodeValues : new int[]{0, 0, 0, 0, 0, 0};
+        if (mixPresetValues != null){
+            presetValues = mixPresetValues;
+        } else {
+            presetValues = qrCodeValues != null ? qrCodeValues : new int[]{0, 0, 0, 0, 0, 0};
+        }
 //        if (qrCodeValues != null){
 //            presetValues =  new int[] qrCodeValues;
 //        } else {

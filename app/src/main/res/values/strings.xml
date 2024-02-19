@@ -23,5 +23,8 @@
     <string name="strawberry">Strawberry</string>
     <string name="green_apple">Green Apple</string>
 
+    <!-- Percentage -->
+    <string name="mix_apple_tea">20,30,50,0,0,0</string>
+
 
 </resources>

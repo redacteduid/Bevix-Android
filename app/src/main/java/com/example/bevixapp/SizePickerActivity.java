@@ -11,12 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SizePickerActivity extends AppCompatActivity {
 
     private String selectedDrink;
+    private int[] mixPresetValues;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_size_picker);
-
+        String menuPresetValues = getIntent().getStringExtra("drink_mix");
+        String[] parts = menuPresetValues.split(",");
+        mixPresetValues = new int[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            mixPresetValues[i] = Integer.parseInt(parts[i].trim());
+        }
         // Get the selected drink name from the intent
         selectedDrink = getIntent().getStringExtra("drink_name");
         if (selectedDrink == null) {
@@ -43,6 +49,7 @@ public class SizePickerActivity extends AppCompatActivity {
         intent.putExtra("drink_name", selectedDrink);
         intent.putExtra("cup_size", size);
         intent.putExtra("total_size", totalSize); // Pass total size to CustomMenuActivity
+        intent.putExtra("drink_mix", mixPresetValues);
         startActivity(intent);
     }
 }

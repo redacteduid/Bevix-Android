@@ -26,11 +26,11 @@ public class MenuActivity extends AppCompatActivity implements MenuAdapter.OnIte
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem(getString(R.string.drink_purple), getString(R.string.description_purple), R.drawable.ic_launcher_background));
-        menuItems.add(new MenuItem(getString(R.string.drink_lemon_lime), getString(R.string.description_lemon_lime), R.drawable.ic_launcher_background));
-        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_apple), getString(R.string.description_strawberry_apple), R.drawable.ic_launcher_background));
-        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_tea), getString(R.string.description_strawberry_tea), R.drawable.ic_launcher_background));
-        menuItems.add(new MenuItem(getString(R.string.drink_apple_tea), getString(R.string.description_apple_tea), R.drawable.ic_launcher_background));
+        menuItems.add(new MenuItem(getString(R.string.drink_purple), getString(R.string.description_purple),getString(R.string.mix_apple_tea), R.drawable.ic_launcher_background));
+        menuItems.add(new MenuItem(getString(R.string.drink_lemon_lime), getString(R.string.description_lemon_lime), getString(R.string.mix_apple_tea), R.drawable.ic_launcher_background));
+        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_apple), getString(R.string.description_strawberry_apple),getString(R.string.mix_apple_tea), R.drawable.ic_launcher_background));
+        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_tea), getString(R.string.description_strawberry_tea),getString(R.string.mix_apple_tea), R.drawable.ic_launcher_background));
+        menuItems.add(new MenuItem(getString(R.string.drink_apple_tea), getString(R.string.description_apple_tea), getString(R.string.mix_apple_tea), R.drawable.ic_launcher_background));
 
         adapter = new MenuAdapter(this, menuItems, this); // Pass 'this' as the listener
         recyclerView.setAdapter(adapter);
@@ -52,6 +52,7 @@ public class MenuActivity extends AppCompatActivity implements MenuAdapter.OnIte
         Intent intent = new Intent(MenuActivity.this, SizePickerActivity.class);
         intent.putExtra("drink_name", item.getName());
         intent.putExtra("drink_description", item.getDescription());
+        intent.putExtra("drink_mix", item.getMix());
         startActivity(intent);
 
 //        Intent drinkNameIntent = new Intent(MenuActivity.this, DrinkQRActivity.class);
