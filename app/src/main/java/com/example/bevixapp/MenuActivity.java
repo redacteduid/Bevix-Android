@@ -39,10 +39,14 @@ public class MenuActivity extends AppCompatActivity implements MenuAdapter.OnIte
         customButton = findViewById(R.id.customButton);
 
         // Set click listener for the custom button
-        customButton.setOnClickListener(v -> {
+        customButton.setOnClickListener(new View.OnClickListener() {
             // Handle custom button click here
-            Intent intent = new Intent(MenuActivity.this, SizePickerActivity.class);
-            startActivity(intent);
+            @Override
+            public void onClick(View v) {
+                // Handle custom button click here
+                Intent intent = new Intent(MenuActivity.this, SizePickerActivity.class);
+                startActivity(intent);
+            }
         });
     }
 

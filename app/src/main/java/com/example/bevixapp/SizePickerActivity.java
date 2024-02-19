@@ -18,10 +18,12 @@ public class SizePickerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_size_picker);
         String menuPresetValues = getIntent().getStringExtra("drink_mix");
-        String[] parts = menuPresetValues.split(",");
-        mixPresetValues = new int[parts.length];
-        for (int i = 0; i < parts.length; i++) {
-            mixPresetValues[i] = Integer.parseInt(parts[i].trim());
+        if (menuPresetValues != null){
+            String[] parts = menuPresetValues.split(",");
+            mixPresetValues = new int[parts.length];
+            for (int i = 0; i < parts.length; i++) {
+                mixPresetValues[i] = Integer.parseInt(parts[i].trim());
+            }
         }
         // Get the selected drink name from the intent
         selectedDrink = getIntent().getStringExtra("drink_name");
