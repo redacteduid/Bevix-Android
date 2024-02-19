@@ -311,6 +311,33 @@ public class BluetoothActivity extends AppCompatActivity {
         return null;
     }
 
+//    private void connectToDevice() {
+//        // Check if permissions are granted
+//        if (checkSelfPermission(Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
+//                checkSelfPermission(Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+//            // Permissions not granted, request them
+//            requestPermissions(new String[]{Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN}, REQUEST_BLUETOOTH_PERMISSIONS);
+//            return; // Cannot perform operation until permissions are granted
+//        }
+//
+//        try {
+//            socket = hc05Device.createRfcommSocketToServiceRecord(HC05_UUID);
+//            socket.connect();
+//            outputStream = socket.getOutputStream();
+//            Log.d(TAG, "Connected to Bevix");
+//            // Add code here to show a toast indicating paired and connected
+//            Toast.makeText(this, "Paired and connected to Bevix", Toast.LENGTH_SHORT).show();
+//
+//            // Example usage: Sending presetValues array over Bluetooth
+//            int[] presetValues = getIntent().getIntArrayExtra("drink_data_array");
+//
+//            sendDataOverBluetooth(presetValues);
+//        } catch (IOException e) {
+//            Log.e(TAG, "Error connecting to Bevix: " + e.getMessage());
+//            finish();
+//        }
+//    }
+
     private void connectToDevice() {
         // Check if permissions are granted
         if (checkSelfPermission(Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
@@ -331,12 +358,18 @@ public class BluetoothActivity extends AppCompatActivity {
             // Example usage: Sending presetValues array over Bluetooth
             int[] presetValues = getIntent().getIntArrayExtra("drink_data_array");
 
-            sendDataOverBluetooth(presetValues);
+            // Check if presetValues is not null before sending over Bluetooth
+            if (presetValues != null) {
+                sendDataOverBluetooth(presetValues);
+            } else {
+                Log.e(TAG, "Preset values array is null");
+            }
         } catch (IOException e) {
             Log.e(TAG, "Error connecting to Bevix: " + e.getMessage());
             finish();
         }
     }
+
 
     @Override
     protected void onDestroy() {

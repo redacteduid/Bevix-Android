@@ -23,13 +23,13 @@
       android:text="Save QR Code" />
 
   <Button
-      android:id="@+id/cancelButton"
+      android:id="@+id/finishButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Cancel"
       android:layout_below="@id/qrCodeImageView"
-      android:layout_marginTop="32dp"
+      android:layout_alignParentStart="true"
       android:layout_marginStart="16dp"
-      android:layout_alignParentStart="true"/>
+      android:layout_marginTop="32dp"
+      android:text="Finish" />
 
 </RelativeLayout>
