@@ -9,6 +9,7 @@
     <string name="drink_apple_tea">Apple Tea</string>
 
     <!-- Drink Descriptions -->
+
     <string name="description_purple">A refreshing purple-colored beverage with a unique flavor.</string>
     <string name="description_lemon_lime">A citrusy blend of lemon and lime flavors.</string>
     <string name="description_strawberry_apple">A delicious combination of fresh strawberries and ripe apples.</string>
@@ -24,7 +25,11 @@
     <string name="green_apple">Green Apple</string>
 
     <!-- Percentage -->
-    <string name="mix_apple_tea">20,30,50,0,0,0</string>
+    <string name="mix_purple_drink">20,10,70,0,0,0</string>
+    <string name="mix_lemon_lime">55,15,0,30,0,0</string>
+    <string name="mix_strawberry_apple">15,0,0,0,40,45</string>
+    <string name="mix_strawberry_tea">0,10,40,0,50,0</string>
+    <string name="mix_apple_tea">0,10,0,20,0,70</string>
 
 
 </resources>

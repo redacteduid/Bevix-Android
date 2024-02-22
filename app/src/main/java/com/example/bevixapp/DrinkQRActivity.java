@@ -79,7 +79,7 @@ public class DrinkQRActivity extends AppCompatActivity {
 //
 //                }
                 Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
-                intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+                intent.putExtra("drink_data_array", presetValues); // Pass presetValues to CupPlacementActivity
                 startActivity(intent);
             }
         });
