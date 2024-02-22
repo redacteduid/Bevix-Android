@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:text="-"
-        android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
 
@@ -47,7 +46,6 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:text="+"
-        android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
 
