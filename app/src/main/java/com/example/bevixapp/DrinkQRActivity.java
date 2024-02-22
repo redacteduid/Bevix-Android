@@ -2,16 +2,13 @@ package com.example.bevixapp;
 
 import android.Manifest;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,9 +23,6 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Arrays;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class DrinkQRActivity extends AppCompatActivity {
 
@@ -52,39 +46,37 @@ public class DrinkQRActivity extends AppCompatActivity {
 
         qrCodeImageView = findViewById(R.id.qrCodeImageView);
         Button saveButton = findViewById(R.id.saveButton);
-        Button cancelButton = findViewById(R.id.cancelButton);
+        Button finishButton = findViewById(R.id.finishButton);
         assert presetValues != null;
         generateQRCode(presetValues);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-//            public void onClick(View v) {
+        //            public void onClick(View v) {
 //                if (checkPermission()) {
 //                    saveQRCodeImage();
 //                } else {
 //                    requestPermission();
 //                }
 //            }
-
-            public void onClick(View v) {
+        saveButton.setOnClickListener(v -> {
 
 //                // Check if extras is not null and presetValues is not null before using them
-//                if (presetValues != null) {
-//                    // Convert the array to string to display
+            //                    // Convert the array to string to display
 //                    StringBuilder stringBuilder = new StringBuilder();
 //                    for (int value : presetValues) {
 //                        stringBuilder.append(value).append(", ");
 //                    }
 //                    generateQRCode(presetValues);
+            Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
+            intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+            startActivity(intent);
 //
-//                }
-                Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
-                intent.putExtra("drink_data_array", presetValues); // Pass presetValues to CupPlacementActivity
-                startActivity(intent);
-            }
+
+//                Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
+//                intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+//                startActivity(intent);
         });
 
-        cancelButton.setOnClickListener(v -> confirmCancellation());
+        finishButton.setOnClickListener(v -> finishSaving());
     }
 
     private boolean checkPermission() {
@@ -186,27 +178,27 @@ public class DrinkQRActivity extends AppCompatActivity {
         contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, displayName);
         contentValues.put(MediaStore.Images.Media.MIME_TYPE, mimeType);
         Uri imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-        try (OutputStream outputStream = getContentResolver().openOutputStream(imageUri)) {
-            qrCodeBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-            Toast.makeText(this, "QR code saved successfully", Toast.LENGTH_SHORT).show();
+        try {
+            assert imageUri != null;
+            try (OutputStream outputStream = getContentResolver().openOutputStream(imageUri)) {
+                qrCodeBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+                Toast.makeText(this, "QR code saved successfully", Toast.LENGTH_SHORT).show();
+            }
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Failed to save QR code", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void confirmCancellation() {
-        // Confirm cancellation dialog
+    private void finishSaving() {
+        // Finished saving QR code dialog
         new AlertDialog.Builder(this)
-                .setTitle("Cancel Drink Sharing")
-                .setMessage("Are you sure you want to cancel sharing the drink QR code?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Return to order menu
-                        startActivity(new Intent(DrinkQRActivity.this, MenuActivity.class));
-                        finish();
-                    }
+                .setTitle("Complete your order")
+                .setMessage("Are you done saving the QR code?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    // Return to order menu
+                    startActivity(new Intent(DrinkQRActivity.this, MenuActivity.class));
+                    finish();
                 })
                 .setNegativeButton("No", null)
                 .show();
