@@ -31,7 +31,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/ic_medium"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@null" /> <!-- Add a placeholder icon here -->
 
@@ -65,9 +65,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_background"
                 android:layout_gravity="center_horizontal"
-                android:contentDescription="@null" /> <!-- Add a placeholder icon here -->
+                android:contentDescription="@null"
+                android:src="@drawable/ic_large" /> <!-- Add a placeholder icon here -->
 
             <TextView
                 android:layout_width="wrap_content"

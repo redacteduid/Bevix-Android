@@ -41,12 +41,12 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
 
         // Initialize ingredients
         ingredients = new ArrayList<>();
-        ingredients.add(new Ingredient("Tonic Water", R.drawable.ic_launcher_background));
-        ingredients.add(new Ingredient("Lime Juice", R.drawable.ic_launcher_background));
-        ingredients.add(new Ingredient("Butterfly Pea", R.drawable.ic_launcher_background));
-        ingredients.add(new Ingredient("Lemon Juice", R.drawable.ic_launcher_background));
-        ingredients.add(new Ingredient("Strawberry", R.drawable.ic_launcher_background));
-        ingredients.add(new Ingredient("Green Apple", R.drawable.ic_launcher_background));
+        ingredients.add(new Ingredient("Tonic Water", R.drawable.tonicwater));
+        ingredients.add(new Ingredient("Lime Juice", R.drawable.limejuice));
+        ingredients.add(new Ingredient("Butterfly Pea", R.drawable.butteryflypea));
+        ingredients.add(new Ingredient("Lemon Juice", R.drawable.lemonjuice));
+        ingredients.add(new Ingredient("Strawberry", R.drawable.strawberryjuice));
+        ingredients.add(new Ingredient("Green Apple", R.drawable.greenapplejuice));
 
         // Initialize preset values with 6 zeros initially
 //        presetValues = new int[]{0, 0, 0, 0, 0, 0};

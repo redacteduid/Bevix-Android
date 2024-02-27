@@ -22,13 +22,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BevixApp"
-        tools:targetApi="31">
+        tools:targetApi="34">
 
         <activity android:name=".CustomMenuActivity" />
         <activity
             android:name=".CupPlacementActivity"
             android:exported="false" />
-        <activity android:name=".ConfirmationPromptActivity" />
         <activity
             android:name=".SizePickerActivity"
             android:exported="false" />
@@ -37,9 +36,6 @@
             android:exported="false" />
         <activity
             android:name=".BluetoothActivity"
-            android:exported="false" />
-        <activity
-            android:name=".QRScanView"
             android:exported="false" />
         <activity
             android:name=".QRScanner"
@@ -54,7 +50,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Include DrinkSharingActivity -->
         <activity
             android:name=".DrinkQRActivity"
             android:exported="false" />

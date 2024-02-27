@@ -1,5 +1,6 @@
 package com.example.bevixapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ public class QRScanner extends AppCompatActivity {
     private CaptureManager capture;
     private DecoratedBarcodeView barcodeScannerView;
 
-    private int currentCameraId = 0; // 0 for back camera, 1 for front camera
+    //private int currentCameraId = 0; // 0 for back camera, 1 for front camera
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class QRScanner extends AppCompatActivity {
         barcodeScannerView.setStatusText("");
 
         // Set camera settings to use the front camera
-        barcodeScannerView.getBarcodeView().getCameraSettings().setRequestedCameraId(1); // 1 indicates the front camera
+        barcodeScannerView.getBarcodeView().getCameraSettings().setRequestedCameraId(1); // 0 for rear camera or 1 indicates the front camera
 
         capture = new CaptureManager(this, barcodeScannerView);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
@@ -54,7 +55,7 @@ public class QRScanner extends AppCompatActivity {
     }
 
     // BarcodeCallBack
-    private BarcodeCallback callback = result -> {
+    private final BarcodeCallback callback = result -> {
         // Handle the scanned QR code result here
         String qrCodeText = result.getText();
 

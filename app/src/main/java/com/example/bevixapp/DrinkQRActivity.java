@@ -67,7 +67,7 @@ public class DrinkQRActivity extends AppCompatActivity {
 //                    }
 //                    generateQRCode(presetValues);
             Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
-            intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+            intent.putExtra("drink_data_array", presetValues); // Pass presetValues to CupPlacementActivity
             startActivity(intent);
 //
 
@@ -196,8 +196,8 @@ public class DrinkQRActivity extends AppCompatActivity {
                 .setTitle("Complete your order")
                 .setMessage("Are you done saving the QR code?")
                 .setPositiveButton("Yes", (dialog, which) -> {
-                    // Return to order menu
-                    startActivity(new Intent(DrinkQRActivity.this, MenuActivity.class));
+                    // Return to main
+                    startActivity(new Intent(DrinkQRActivity.this, MainActivity.class));
                     finish();
                 })
                 .setNegativeButton("No", null)
