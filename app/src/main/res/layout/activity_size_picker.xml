@@ -38,11 +38,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="350 mL"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp" /> <!-- Add text "Medium 350 mL" here -->
+                android:layout_marginTop="8dp"
+                android:text="150 mL"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" /> <!-- Add text "Medium 350 mL" here -->
 
             <Button
                 android:id="@+id/buttonMedium"
@@ -72,11 +72,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="450 mL"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp" /> <!-- Add text "Large 450 mL" here -->
+                android:layout_marginTop="8dp"
+                android:text="250 mL"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" /> <!-- Add text "Large 450 mL" here -->
 
             <Button
                 android:id="@+id/buttonLarge"

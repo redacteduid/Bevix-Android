@@ -41,9 +41,9 @@ public class SizePickerActivity extends AppCompatActivity {
     private void showCustomizationPrompt(String selectedDrink, String size) {
         int totalSize = 0;
         if (size.equals("Medium")) {
-            totalSize = 350; // Set total size for medium
+            totalSize = 150; // Set total size for medium
         } else if (size.equals("Large")) {
-            totalSize = 450; // Set total size for large
+            totalSize = 250; // Set total size for large
         }
 
         // Pass the total size to the CustomMenuActivity
