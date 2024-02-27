@@ -23,9 +23,9 @@ public class CupPlacementActivity extends AppCompatActivity {
             int[] presetValues = getIntent().getIntArrayExtra("presetValues");
 
             // Start Bluetooth activity with the generated drink data array
-            Intent bluetoothIntent = new Intent(CupPlacementActivity.this, BluetoothActivity.class);
-            bluetoothIntent.putExtra("drink_data_array", presetValues);
-            startActivity(bluetoothIntent);
+//            Intent bluetoothIntent = new Intent(CupPlacementActivity.this, BluetoothActivity.class);
+//            bluetoothIntent.putExtra("drink_data_array", presetValues);
+//            startActivity(bluetoothIntent);
 
             // Display QR code based on the data
 //            Intent qrIntent = new Intent(CupPlacementActivity.this, DrinkQRActivity.class);
