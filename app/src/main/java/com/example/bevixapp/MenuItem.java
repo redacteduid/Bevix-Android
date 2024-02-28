@@ -4,13 +4,13 @@ public class MenuItem {
     private String name;
     private String description;
     private String mix;
-    private int imageResource;
+    private int[] iconResources; // Array to hold icon resource IDs
 
-    public MenuItem(String name, String description, String mix, int imageResource) {
+    public MenuItem(String name, String description, String mix, int iconResources) {
         this.name = name;
         this.description = description;
         this.mix = mix;
-        this.imageResource = imageResource;
+        this.iconResources = new int[]{iconResources};
     }
 
     public String getName() {
@@ -21,11 +21,11 @@ public class MenuItem {
         return description;
     }
 
-    public String getMix() {return mix;}
+    public String getMix() {
+        return mix;
+    }
 
-    public int getImageResource() {
-        return imageResource;
+    public int[] getIconResources() {
+        return iconResources;
     }
 }
-
-
