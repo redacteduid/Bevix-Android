@@ -37,7 +37,7 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
         buttonDone = findViewById(R.id.button_done);
 
         // Get total size selected from SizePickerActivity
-        totalSize = getIntent().getIntExtra("total_size", 0);
+        int totalSize = getIntent().getIntExtra("total_size", 150);
 
         // Initialize ingredients
         ingredients = new ArrayList<>();
@@ -76,6 +76,7 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
                 // Proceed to CupPlacementActivity
                 Intent intent = new Intent(CustomMenuActivity.this, CupPlacementActivity.class);
                 intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
+                intent.putExtra("total_size", totalSize);
                 startActivity(intent);
 
 

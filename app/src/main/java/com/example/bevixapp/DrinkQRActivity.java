@@ -1,5 +1,7 @@
 package com.example.bevixapp;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,7 +43,7 @@ public class DrinkQRActivity extends AppCompatActivity {
         // Generate drink data array based on the selected drink
         Bundle extras = getIntent().getExtras();
         assert extras != null;
-        int[] presetValues = extras.getIntArray("presetValues");
+        int[] presetValues = extras.getIntArray("drink_data_array");
         // Generate and display QR code
 //        generateQRCode(selectedDrink, presetValues);
 
@@ -48,6 +51,8 @@ public class DrinkQRActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
         Button finishButton = findViewById(R.id.finishButton);
         assert presetValues != null;
+
+
         generateQRCode(presetValues);
 
         //            public void onClick(View v) {

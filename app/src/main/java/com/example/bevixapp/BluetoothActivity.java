@@ -163,8 +163,10 @@ public class BluetoothActivity extends AppCompatActivity {
             // Example usage: Sending presetValues array over Bluetooth
             int[] presetValues = getIntent().getIntArrayExtra("drink_data_array");
 
+
             // Check if presetValues is not null before sending over Bluetooth
             if (presetValues != null) {
+
                 sendDataOverBluetooth(presetValues);
             } else {
                 Log.e(TAG, "Preset values array is null");
@@ -205,11 +207,14 @@ public class BluetoothActivity extends AppCompatActivity {
 
         // Create a StringBuilder to build the comma-separated string
         StringBuilder sb = new StringBuilder();
-
+        int totalSize = getIntent().getIntExtra("total_size", 150);
         // Limit to 6 elements
         int maxLength = Math.min(presetValues.length, 6);
         for (int i = 0; i < maxLength; i++) {
-            sb.append(presetValues[i]);
+            double[] correction = {1.25, 1.3, 1.2, 1.3, 1.3, 1.1};
+            double[] flowrate = {2.9, 3.3, 3.2, 3.3, 3.4, 3.5};
+            float calculatedValue = (float) ((((presetValues[i] / 100.0) * totalSize) / flowrate[i])*correction[i]);
+            sb.append(calculatedValue);
             if (i < maxLength - 1) { // Append comma for all elements except the last one
                 sb.append(",");
             }
@@ -228,10 +233,16 @@ public class BluetoothActivity extends AppCompatActivity {
                 closeBluetoothSocket();
 
                 // Return to the main activity
-                Intent mainActivityIntent = new Intent(BluetoothActivity.this, MainActivity.class);
-                mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Clear the back stack
-                startActivity(mainActivityIntent);
-                finish(); // Finish the current activity to prevent going back to it from the main activity
+//                Intent mainActivityIntent = new Intent(BluetoothActivity.this, MainActivity.class);
+//                mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Clear the back stack
+//                startActivity(mainActivityIntent);
+                Intent qrIntent = new Intent(BluetoothActivity.this, DrinkQRActivity.class);
+//              qrIntent.putExtra("drink_name", selectedDrink);
+                qrIntent.putExtra("drink_data_array", presetValues);
+                startActivity(qrIntent);
+
+//                finish();
+                // Finish the current activity to prevent going back to it from the main activity
             } catch (IOException e) {
                 // Handle failure to send data
                 Log.e(TAG, "Error sending data: " + e.getMessage());

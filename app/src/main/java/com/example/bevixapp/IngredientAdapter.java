@@ -44,7 +44,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         holder.buttonMinus.setOnClickListener(v -> {
             int mlCount = Integer.parseInt(holder.textViewCounter.getText().toString());
             if (mlCount > 0) {
-                mlCount -= 10;
+                mlCount -= 5;
                 holder.textViewCounter.setText(String.valueOf(mlCount));
                 presetValues[position] = mlCount; // Update array value
                 listener.onIngredientQuantityChanged(position, mlCount); // Notify listener
@@ -54,7 +54,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
         holder.buttonPlus.setOnClickListener(v -> {
             int mlCount = Integer.parseInt(holder.textViewCounter.getText().toString());
             if (mlCount < 100) {
-                mlCount += 10;
+                mlCount += 5;
                 holder.textViewCounter.setText(String.valueOf(mlCount));
                 presetValues[position] = mlCount; // Update array value
                 listener.onIngredientQuantityChanged(position, mlCount); // Notify listener
