@@ -74,9 +74,10 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
 //                secondIntent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
 //                startActivity(secondIntent);
                 // Proceed to CupPlacementActivity
-                Intent intent = new Intent(CustomMenuActivity.this, CupPlacementActivity.class);
+                Intent intent = new Intent(CustomMenuActivity.this, DrinkQRActivity.class);
                 intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
                 intent.putExtra("total_size", totalSize);
+                intent.putExtra("drink_data_array", presetValues);
                 startActivity(intent);
 
 

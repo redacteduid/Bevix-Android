@@ -50,7 +50,7 @@ public class MenuActivity extends AppCompatActivity implements MenuAdapter.OnIte
     @Override
     public void onItemClick(MenuItem item) {
         // Handle item click here
-        Intent intent = new Intent(MenuActivity.this, SizePickerActivity.class);
+        Intent intent = new Intent(MenuActivity.this, CustomMenuActivity.class);
         intent.putExtra("drink_name", item.getName());
         intent.putExtra("drink_description", item.getDescription());
         intent.putExtra("drink_mix", item.getMix());

@@ -55,30 +55,13 @@ public class DrinkQRActivity extends AppCompatActivity {
 
         generateQRCode(presetValues);
 
-        //            public void onClick(View v) {
-//                if (checkPermission()) {
-//                    saveQRCodeImage();
-//                } else {
-//                    requestPermission();
-//                }
-//            }
+        // Set click listeners for buttons
         saveButton.setOnClickListener(v -> {
-
-//                // Check if extras is not null and presetValues is not null before using them
-            //                    // Convert the array to string to display
-//                    StringBuilder stringBuilder = new StringBuilder();
-//                    for (int value : presetValues) {
-//                        stringBuilder.append(value).append(", ");
-//                    }
-//                    generateQRCode(presetValues);
-            Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
-            intent.putExtra("drink_data_array", presetValues); // Pass presetValues to CupPlacementActivity
-            startActivity(intent);
-//
-
-//                Intent intent = new Intent(DrinkQRActivity.this, BluetoothActivity.class);
-//                intent.putExtra("presetValues", presetValues); // Pass presetValues to CupPlacementActivity
-//                startActivity(intent);
+            if (checkPermission()) {
+                saveQRCodeImage();
+            } else {
+                requestPermission();
+            }
         });
 
         finishButton.setOnClickListener(v -> finishSaving());
@@ -108,41 +91,6 @@ public class DrinkQRActivity extends AppCompatActivity {
         Bitmap qrCodeBitmap = ((BitmapDrawable) qrCodeImageView.getDrawable()).getBitmap();
         saveDrinkQRCode(qrCodeBitmap);
     }
-//
-//    private void generateQRCode(String selectedDrink, int[] presetValues) {
-//        Log.d("DrinkQRActivity", "Selected Drink: " + selectedDrink);
-//        Log.d("DrinkQRActivity", "Drink Data Array: " + Arrays.toString(presetValues));
-//        // Check if the selected drink name and its data array are not null
-//        if (selectedDrink == null || presetValues == null) {
-//            Toast.makeText(this, "Error: Drink data is missing", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        // Generate QR code for drink data
-//        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-//        try {
-//            StringBuilder drinkData = new StringBuilder();
-//            for (int i = 0; i < presetValues.length; i++) {
-//                drinkData.append(presetValues[i]);
-//                if (i != presetValues.length - 1) {
-//                    drinkData.append(",");
-//                }
-//            }
-//            BitMatrix bitMatrix = qrCodeWriter.encode(drinkData.toString(), com.google.zxing.BarcodeFormat.QR_CODE, 400, 400);
-//            Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.RGB_565);
-//
-//            for (int x = 0; x < 400; x++) {
-//                for (int y = 0; y < 400; y++) {
-//                    bitmap.setPixel(x, y, bitMatrix.get(x, y) ? getResources().getColor(R.color.black) : getResources().getColor(R.color.white));
-//                }
-//            }
-//
-//            qrCodeImageView.setImageBitmap(bitmap);
-//        } catch (WriterException e) {
-//            e.printStackTrace();
-//            Toast.makeText(this, "Failed to generate QR code", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     private void generateQRCode(int[] presetValues) {
         // Generate QR code for the preset values
@@ -170,10 +118,6 @@ public class DrinkQRActivity extends AppCompatActivity {
             Toast.makeText(this, "Failed to generate QR code", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
 
     private void saveDrinkQRCode(Bitmap qrCodeBitmap) {
         // Save QR code bitmap to storage
@@ -209,4 +153,3 @@ public class DrinkQRActivity extends AppCompatActivity {
                 .show();
     }
 }
-

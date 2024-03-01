@@ -28,7 +28,7 @@ public class QRScanner extends AppCompatActivity {
         barcodeScannerView.setStatusText("");
 
         // Set camera settings to use the front camera
-        barcodeScannerView.getBarcodeView().getCameraSettings().setRequestedCameraId(1); // 0 for rear camera or 1 indicates the front camera
+        barcodeScannerView.getBarcodeView().getCameraSettings().setRequestedCameraId(0); // 0 for rear camera or 1 indicates the front camera
 
         capture = new CaptureManager(this, barcodeScannerView);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
@@ -71,15 +71,15 @@ public class QRScanner extends AppCompatActivity {
         for (int i = 0; i < item.length; i++) {
             presetValues[i] = Integer.parseInt(item[i].trim());
         }
-        Intent QRintent = new Intent(QRScanner.this, CustomMenuActivity.class);
-        QRintent.putExtra("qrCodeValues", presetValues);
-        startActivity(QRintent);
+//        Intent QRintent = new Intent(QRScanner.this, CustomMenuActivity.class);
+//        QRintent.putExtra("qrCodeValues", presetValues);
+//        startActivity(QRintent);
 
 
 
         // Create an Intent to open the SizePickerActivity and pass the QR code text
-//        Intent intent = new Intent(QRScanner.this, SizePickerActivity.class);
-//        intent.putExtra("qrCodeText", qrCodeText);
-//        startActivity(intent);
+        Intent intent = new Intent(QRScanner.this, CustomMenuActivity.class);
+        intent.putExtra("qrCodeValues", presetValues);
+        startActivity(intent);
     };
 }

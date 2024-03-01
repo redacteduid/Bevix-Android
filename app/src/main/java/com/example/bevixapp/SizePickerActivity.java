@@ -17,6 +17,7 @@ public class SizePickerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_size_picker);
+
         String menuPresetValues = getIntent().getStringExtra("drink_mix");
         if (menuPresetValues != null){
             String[] parts = menuPresetValues.split(",");
@@ -45,13 +46,14 @@ public class SizePickerActivity extends AppCompatActivity {
         } else if (size.equals("Large")) {
             totalSize = 250; // Set total size for large
         }
-
+        int[] qrCodeValues = getIntent().getIntArrayExtra("qrCodeValues");
         // Pass the total size to the CustomMenuActivity
         Intent intent = new Intent(SizePickerActivity.this, CustomMenuActivity.class);
         intent.putExtra("drink_name", selectedDrink);
         intent.putExtra("cup_size", size);
         intent.putExtra("total_size", totalSize); // Pass total size to CustomMenuActivity
         intent.putExtra("drink_mix", mixPresetValues);
+        intent.putExtra("qrCodeValues", qrCodeValues );
         startActivity(intent);
     }
 }
