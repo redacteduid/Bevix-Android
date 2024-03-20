@@ -43,11 +43,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         private TextView descriptionTextView;
         private ImageView[] iconImageViews; // Array to hold ImageViews for icons
 
+        private TextView bestTextView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.name_text_view);
             descriptionTextView = itemView.findViewById(R.id.description_text_view);
-
+//            bestTextView = itemView.findViewById(R.id.best_text_view);
             // Initialize ImageViews for icons
             iconImageViews = new ImageView[5]; // Assuming you have 5 icons per item
             iconImageViews[0] = itemView.findViewById(R.id.icon_image_view1);
@@ -62,7 +64,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         public void bind(final MenuItem menuItem) {
             nameTextView.setText(menuItem.getName());
             descriptionTextView.setText(menuItem.getDescription());
-
+//            bestTextView.setText(menuItem.getBestText());
             // Set icons
             int[] iconResources = menuItem.getIconResources();
             for (int i = 0; i < iconImageViews.length; i++) {

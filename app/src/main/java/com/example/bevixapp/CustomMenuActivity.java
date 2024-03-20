@@ -62,6 +62,8 @@ public class    CustomMenuActivity extends AppCompatActivity implements Ingredie
 //        }
         // Initialize RecyclerView
         adapter = new IngredientAdapter(ingredients, presetValues, this, this);
+//        adapter = new IngredientAdapter(ingredients, presetValues, this);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

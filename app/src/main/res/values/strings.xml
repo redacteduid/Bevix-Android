@@ -8,6 +8,12 @@
     <string name="drink_strawberry_tea">Strawberry Tea</string>
     <string name="drink_apple_tea">Apple Tea</string>
 
+    <!-- Drink Names -->
+    <string name="drink_purple_best">Bestseller</string>
+    <string name="drink_lemon_lime_best"></string>
+    <string name="drink_strawberry_apple_best"></string>
+    <string name="drink_strawberry_tea_best"></string>
+    <string name="drink_apple_tea_best"></string>
     <!-- Drink Descriptions -->
     <string name="description_purple">A refreshing purple-colored beverage with a unique flavor.</string>
     <string name="description_lemon_lime">A citrusy blend of lemon and lime flavors.</string>

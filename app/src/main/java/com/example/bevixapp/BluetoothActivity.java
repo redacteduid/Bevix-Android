@@ -211,14 +211,14 @@ public class BluetoothActivity extends AppCompatActivity {
         // Limit to 6 elements
         int maxLength = Math.min(presetValues.length, 6);
         for (int i = 0; i < maxLength; i++) {
-            double[] correction1 = {1.1, 1.3, 1.18, 1.2, 1.3, 1.1};
+            double[] correction1 = {1.1, 1.5, 1.18, 1.2, 1.3, 1.1};
             double[] correction2 = {1,1.25,1.18,1.1,1.25,1.042};
             double[] flowrate = {2.9, 3.3, 3.2, 3.3, 3.4, 3.5};
             if (totalSize == 150) {
-                float calculatedValue = (float) ((((presetValues[i] / 100.0) * totalSize) / flowrate[i]) * correction1[i]);
+                int calculatedValue = (int) ((((presetValues[i] / 100.0) * totalSize) / flowrate[i]) * correction1[i]);
                 sb.append(calculatedValue);
             } else {
-                float calculatedValue = (float) ((((presetValues[i] / 100.0) * totalSize) / flowrate[i]) * correction2[i]);
+                int calculatedValue = (int) ((((presetValues[i] / 100.0) * totalSize) / flowrate[i]) * correction2[i]);
                 sb.append(calculatedValue);
             }
             if (i < maxLength - 1) { // Append comma for all elements except the last one

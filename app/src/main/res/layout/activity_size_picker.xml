@@ -90,6 +90,20 @@
                 android:textSize="20sp" /> <!-- Add button "Large" here -->
         </LinearLayout>
 
+
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_view_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+ Select Dominant Flavors: Choose one or two dominant flavors that you want to feature prominently in your drink, such as citrusy, fruity, or herbal notes. \n \n
++ Consider Complementary Ingredients: Identify ingredients that complement your chosen flavors, focusing on aspects like sweetness, acidity, and bitterness. \n \n
++ Experiment with Ratios: Begin by experimenting with different percentage ratios of ingredients to find the perfect balance. Start with smaller quantities and adjust to taste. \n \n
++ Personalize to Taste: Remember, there are no strict rules. Tailor the recipe according to your taste preferences and creativity. Let your imagination guide you"
+
+        android:textSize="12sp"
+        android:paddingTop="50dp" />
 
 </LinearLayout>

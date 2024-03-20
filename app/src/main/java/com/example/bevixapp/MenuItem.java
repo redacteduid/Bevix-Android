@@ -5,12 +5,15 @@ public class MenuItem {
     private String description;
     private String mix;
     private int[] iconResources; // Array to hold icon resource IDs
+    private String best;
 
-    public MenuItem(String name, String description, String mix, int iconResources) {
+    public MenuItem(String name, String description, String mix, int iconResources, String best) {
         this.name = name;
         this.description = description;
         this.mix = mix;
         this.iconResources = new int[]{iconResources};
+        this.best = best;
+
     }
 
     public String getName() {
@@ -27,5 +30,8 @@ public class MenuItem {
 
     public int[] getIconResources() {
         return iconResources;
+    }
+    public String getBest() {
+        return best;
     }
 }

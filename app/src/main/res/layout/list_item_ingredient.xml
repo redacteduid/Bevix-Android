@@ -34,10 +34,17 @@
 
     <TextView
         android:id="@+id/text_view_counter"
-        android:layout_width="48dp"
+        android:layout_width="24dp"
         android:layout_height="48dp"
         android:gravity="center"
         android:text="0"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/text_view_percentage"
+        android:layout_width="24dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="%"
         android:textSize="16sp" />
 
     <Button
@@ -48,5 +55,10 @@
         android:text="+"
         android:textSize="14sp"
         android:textStyle="bold" />
+
+
+
+
+
 
 </LinearLayout>

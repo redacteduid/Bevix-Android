@@ -26,11 +26,11 @@ public class MenuActivity extends AppCompatActivity implements MenuAdapter.OnIte
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem(getString(R.string.drink_purple), getString(R.string.description_purple),getString(R.string.mix_purple_drink), R.drawable.purpledrink));
-        menuItems.add(new MenuItem(getString(R.string.drink_lemon_lime), getString(R.string.description_lemon_lime), getString(R.string.mix_lemon_lime), R.drawable.lemonlime));
-        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_apple), getString(R.string.description_strawberry_apple),getString(R.string.mix_strawberry_apple), R.drawable.strawberryapple));
-        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_tea), getString(R.string.description_strawberry_tea),getString(R.string.mix_strawberry_tea), R.drawable.strawberrytea));
-        menuItems.add(new MenuItem(getString(R.string.drink_apple_tea), getString(R.string.description_apple_tea), getString(R.string.mix_apple_tea), R.drawable.appletea));
+        menuItems.add(new MenuItem(getString(R.string.drink_purple), getString(R.string.description_purple),getString(R.string.mix_purple_drink), R.drawable.purpledrink, getString(R.string.drink_purple_best)));
+        menuItems.add(new MenuItem(getString(R.string.drink_lemon_lime), getString(R.string.description_lemon_lime), getString(R.string.mix_lemon_lime), R.drawable.lemonlime, getString(R.string.drink_apple_tea_best)));
+        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_apple), getString(R.string.description_strawberry_apple),getString(R.string.mix_strawberry_apple), R.drawable.strawberryapple, getString(R.string.drink_apple_tea_best)));
+        menuItems.add(new MenuItem(getString(R.string.drink_strawberry_tea), getString(R.string.description_strawberry_tea),getString(R.string.mix_strawberry_tea), R.drawable.strawberrytea, getString(R.string.drink_apple_tea_best)));
+        menuItems.add(new MenuItem(getString(R.string.drink_apple_tea), getString(R.string.description_apple_tea), getString(R.string.mix_apple_tea), R.drawable.appletea, getString(R.string.drink_apple_tea_best)));
 
         adapter = new MenuAdapter(this, menuItems, this); // Pass 'this' as the listener
         recyclerView.setAdapter(adapter);
